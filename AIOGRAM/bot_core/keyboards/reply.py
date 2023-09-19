@@ -55,6 +55,13 @@ loc_tel_poll_keyboard = ReplyKeyboardMarkup(keyboard=[
     ]
 ], resize_keyboard=True, one_time_keyboard=False, input_field_placeholder="Отправить локацию, номер телефона или создать викторину/опрос")
 
+game_quit = ReplyKeyboardMarkup(keyboard=[[
+        KeyboardButton(
+            text="quit",
+            )
+        ]
+    ], resize_keyboard=True, one_time_keyboard=True
+)
 
 def get_reply_keyboard():
     keyboard_builder = ReplyKeyboardBuilder()

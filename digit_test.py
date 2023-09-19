@@ -1,10 +1,12 @@
 
+def repeat_num(str_to_check):
+    check_dict = dict()
+    for i in range(9):
+        check_dict[i] = 0
+    for num in str_to_check:
+        check_dict[int(num)] += 1
+        if check_dict[int(num)] > 1:
+            return False
+    return True
 
-
-print("-12".isdecimal())
-print("-12".isdigit())
-
-l = "-12"
-
-if l.startswith('-'):
-    print(l[1:].isdigit())
+print(repeat_num("23577"))
