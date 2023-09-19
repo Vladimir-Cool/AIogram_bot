@@ -19,10 +19,6 @@ async def set_commands(bot: Bot):
         BotCommand(
             command="help",
             description="Помощь"
-        ),
-        BotCommand(
-            command="form",
-            description="Начать опрос"
         )
     ]
 

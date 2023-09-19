@@ -5,7 +5,7 @@ import logging
 from aiogram.filters import Command
 
 from settings import settings
-from bot_core.handlers.basic import get_start, get_photo, get_hello, get_location
+from bot_core.handlers.basic import get_start, get_photo, get_hello, get_location, get_help
 from bot_core.handlers.contact import get_true_contact, get_false_contact
 from bot_core.utils.statesform import StepsForm
 from bot_core.handlers import form
@@ -21,7 +21,6 @@ from bot_core.middlewares.officehours import OfficeHoursMiddleware
 async def start_bot(bot: Bot):
     await set_commands(bot)
     await bot.send_message(settings.bots.admin_id, text="Бот запущен")
-
 
 async def stop_bot(bot: Bot):
     await bot.send_message(settings.bots.admin_id, text="Бот отключен")
@@ -44,6 +43,8 @@ async def start():
     dp.message.register(get_hello, F.text == "Привет")
     dp.message.register(get_location, F.location)
     dp.message.register(get_photo, F.photo)
+    """Help"""
+    dp.message.register(get_help, Command(commands=["help"]))
     """Form"""
     dp.message.register(form.get_form, Command(commands=["form"]))
     dp.message.register(form.get_name, StepsForm.GET_NAME)

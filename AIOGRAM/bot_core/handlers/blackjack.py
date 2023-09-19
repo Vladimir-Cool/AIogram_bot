@@ -133,7 +133,11 @@ async def bet(message: Message, state: FSMContext):
 
 
     """Проверка ставки"""
-    if message.text.startswith("-"):
+    if message.text.upper() == "QUIT":
+        await message.answer("Игра завершена")
+        await state.clear()
+
+    elif message.text.startswith("-"):
         if message.text[1:]:
             await message.answer("Cтавка должна быть  больше \"0\"")
     elif message.text.isdecimal():
@@ -179,13 +183,13 @@ async def game(message: Message, state: FSMContext):
     dealer_hand = context_data.get("dealer_hand")
     player_hand = context_data.get("player_hand")
 
-    if message.text == "D" and len(player_hand) == 2:
+    if message.text.upper() == "D" and len(player_hand) == 2:
         if money >= bet:
             bet = bet * 2
             money -= bet
             await message.answer(f"Ставка удвоена.\r\nСтавка: {bet}\r\nДенег осталось: {money}")
 
-    if message.text in ("H", "D"):
+    if message.text.upper() in ("H", "D"):
         player_hand.append(deck.pop())
 
         await message.answer(f"DEALER: {get_hand_value(dealer_hand)}\r\n{display_cards(dealer_hand)}")
@@ -198,7 +202,7 @@ async def game(message: Message, state: FSMContext):
             await end_game(message, state, money)
 
 
-    elif message.text == "S":
+    elif message.text.upper() == "S":
         """Ход дилера"""
         while get_hand_value(dealer_hand) < 18 and get_hand_value(dealer_hand) <= 21:
             dealer_hand.append(deck.pop())
