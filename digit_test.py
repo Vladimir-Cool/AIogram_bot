@@ -1,7 +1,7 @@
 
 def repeat_num(str_to_check):
     check_dict = dict()
-    for i in range(9):
+    for i in range(10):
         check_dict[i] = 0
     for num in str_to_check:
         check_dict[int(num)] += 1
@@ -9,4 +9,4 @@ def repeat_num(str_to_check):
             return False
     return True
 
-print(repeat_num("23577"))
+print(repeat_num("890"))

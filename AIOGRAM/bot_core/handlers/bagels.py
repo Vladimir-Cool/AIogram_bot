@@ -31,7 +31,7 @@ def num_valid(str_to_check):
 
 def repeat_num(str_to_check):
     check_dict = dict()
-    for i in range(9):
+    for i in range(10):
         check_dict[i] = 0
     for num in str_to_check:
         check_dict[int(num)] += 1
@@ -61,7 +61,6 @@ def get_clues(guess, secretnum):
         # Создаем строку из списка
         return ' '.join(clues)
 
-
 async def start_game(message: Message, state: FSMContext):
     await message.answer(f'''Bagels, логическая игра		
 Я задумал {NUM_DIGITS}-х значное число. Цифры не повторяються.		
@@ -78,7 +77,6 @@ async def start_game(message: Message, state: FSMContext):
     await state.update_data(secretnum=get_secret_num())
     await state.update_data(guesses=MAX_GUESSES)
     await state.set_state(StepsBagels.ATTEMPT_GUESS)
-
 
 async def attemp_guess(message: Message, state: FSMContext):
     context_data = await state.get_data()
@@ -116,7 +114,6 @@ async def attemp_guess(message: Message, state: FSMContext):
 
     else:
         await message.answer(f"Нужно указать {NUM_DIGITS}-х значное число\r\nУ вас осталось попыток: {guesses}", reply_markup=game_quit)
-
 
 async def play_again(message: Message, state: FSMContext):
     if match(r"\b[yYдД]", message.text):
