@@ -20,10 +20,10 @@ from bot_core.middlewares.officehours import OfficeHoursMiddleware
 
 async def start_bot(bot: Bot):
     await set_commands(bot)
-    await bot.send_message(settings.bots.admin_id, text="Бот запущен")
+    await bot.send_message(settings.ADMIN_ID, text="Бот запущен")
 
 async def stop_bot(bot: Bot):
-    await bot.send_message(settings.bots.admin_id, text="Бот отключен")
+    await bot.send_message(settings.ADMIN_ID, text="Бот отключен")
 
 
 async def start():
@@ -32,7 +32,7 @@ async def start():
                                "(%(filename)s).%(funcName)s(%(lineno)d) - %(message)s")
 
 
-    bot = Bot(token=settings.bots.bot_token)
+    bot = Bot(token=settings.TOKEN)
     dp = Dispatcher()
     dp.message.middleware.register(CounterMiddleware())
     # dp.message.middleware.register(OfficeHoursMiddleware())
