@@ -1,3 +1,5 @@
 /AIOGRAM/input
 /AIOGRAM/.env
 /.idea
+/venv
+/.gitignore
