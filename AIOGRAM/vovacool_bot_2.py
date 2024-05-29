@@ -4,7 +4,7 @@ from aiogram.types import Message, BotCommandScopeDefault
 from aiogram.filters.command import Command
 
 from settings import settings
-from bot_2_core.handlers import test, different_types, dice_test, tired
+from bot_2_core.handlers import test, different_types, dice_test, tired, compliment_day
 # Включаем логирование, чтобы не пропустить важные сообщения
 
 
@@ -26,7 +26,7 @@ async def start():
 
     # Диспетчер
     dp = Dispatcher()
-    dp.include_routers(test.router, dice_test.router, tired.route, different_types.router)
+    dp.include_routers(tired.route, compliment_day.router, different_types.router)
 
 
     await bot.delete_webhook(drop_pending_updates=True)
