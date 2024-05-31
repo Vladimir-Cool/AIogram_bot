@@ -4,11 +4,11 @@ from aiogram.types import Message
 
 from AIOGRAM.bot_2_core.filters.word_filter import WordFilter
 
-route = Router()
+router = Router()
 word_list = ["устал", "надоел", "замучил",]
-route.message.filter(WordFilter(word_list))
+router.message.filter(WordFilter(word_list))
 
-@route.message(F.text)
+@router.message(F.text)
 async def is_tired(message: Message):
     await message.reply("Не отчаивайся у тебя все получится, скоро домой и там ты отдохнешь!!")
 

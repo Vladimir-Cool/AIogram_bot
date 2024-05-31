@@ -30,8 +30,8 @@ async def get_age(message: Message, state: FSMContext):
     age = context_data.get("age")
     data_user = f"Вот твои данные\r\n" \
                 f"Имя {name}\r\n" \
-                f"Имя {last_name}\r\n" \
-                f"Имя {age}" \
+                f"Фамилия {last_name}\r\n" \
+                f"Возраст {age}" \
 
     await message.answer(data_user)
     await state.clear()

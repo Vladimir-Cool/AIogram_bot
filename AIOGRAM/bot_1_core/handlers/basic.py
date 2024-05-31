@@ -17,13 +17,13 @@ async def get_location(message: Message, bot: Bot):
 
 
 async def get_photo(message: Message, bot: Bot):
-    await message.answer("Отлично. Ты отправил картнку, я ее сохраню.")
+    await message.answer("Отлично. Ты отправил картинку, я ее сохраню.")
     file = await bot.get_file(message.photo[-1].file_id)
     await bot.download_file(file.file_path, "photo.jpg")
 
 
 async def get_hello(message: Message, bot: Bot):
-    await message.answer("И тебе привет!")
+    await message.answer("И тебе привет! я устал")
 
 async def get_help(message: Message, bot: Bot):
     await message.answer(f"{message.from_user.first_name}, помощь пока не реализованна, придеться самому как то справляться, держись!")
