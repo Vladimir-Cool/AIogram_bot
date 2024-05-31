@@ -15,7 +15,6 @@ router.message.filter(WordFilter(word_list))
 async def entities_test(message: Message):
     entities = message.entities
     print(entities)
-    if entities:
-        mention = entities.
+
 
     await message.reply(f"Чек {}")
